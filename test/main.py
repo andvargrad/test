@@ -9,12 +9,9 @@ def save_number():
         pytesseract.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"       #
         img = Image.open(full_link)                                                                     #открывает фаил .JPG or .PNG
         text = pytesseract.image_to_string(img)                                                         #конвертирует текст в строку
-        numb = (text.replace(" ", "").strip())                                                          #убираем лишнии пробелы
-        numb2 = (numb.replace("-", ""))                                                                 #убираем лишнии символы
-        numb3 = (numb2.replace("8", "+7", 1))                                                           #меняем 8 на +7
-        link_numb = (f"https://wa.me/{numb3}")                                                          #подставляем ссылку
+        numb = (text.replace(" ", "").strip()).replace("-", "").replace("8", "+7", 1)                   #убираем лишнии пробелы
+        link_numb = (f"https://wa.me/{numb}")                                                           #подставляем ссылку
         with open("log.txt", "a") as save_file:                                                         #сохраняем в файл log.txt
-            save_file.write(link_numb + "\n")
+            save_file.write(link_numb + "\n")                                                           #_______________
 
-save_number()      #ЗАПУСК ФУНКЦИИ
-
+save_number()       #ЗАПУСК ФУНКЦИИ
