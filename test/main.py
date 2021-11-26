@@ -1,8 +1,13 @@
 import pytesseract
 from PIL import Image
+import os
+#ФУНКЦИЯ ФОРМЕРОВАНИЯ ССЫЛКИ НА ФАИЛ
+for scan_name_file in os.listdir("image"):
+    full_link = (os.path.abspath(f"image\{scan_name_file}"))
+    pytesseract.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
+    img = Image.open(full_link)
+    text = pytesseract.image_to_string(img)
+    numb = (text.replace(" ", ""))
+    numb2 = (numb.replace("-", ""))
+    print(numb2.strip())
 
-img = Image.open(r"C:\Users\Xiaomi\PycharmProjects\github\test\1.png")
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-
-text = pytesseract.image_to_string(img)
-print(text.strip())
