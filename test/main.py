@@ -13,5 +13,5 @@ def save_number():
         link_numb = (f"https://wa.me/{numb}")                                                           #подставляем ссылку
         with open("log.txt", "a") as save_file:                                                         #сохраняем в файл log.txt
             save_file.write(link_numb + "\n")                                                           #_______________
-
+            save_file.close()                                                                           #закрыть файл
 save_number()       #ЗАПУСК ФУНКЦИИ
