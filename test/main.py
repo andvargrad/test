@@ -11,7 +11,17 @@ def save_number():
         text = pytesseract.image_to_string(img)                                                         #конвертирует текст в строку
         numb = (text.replace(" ", "").strip()).replace("-", "").replace("8", "7", 1)                    #убираем лишнии пробелы
         link_numb = (f"https://wa.me/{numb}")                                                           #подставляем ссылку
-        with open("log.txt", "a") as save_file:                                                         #сохраняем в файл log.txt
-            save_file.write(link_numb + "\n")                                                           #_______________
-            save_file.close()                                                                           #закрыть файл
+        a = (len(link_numb))
+        if a == 25:
+            with open("log.txt", "a") as save_file:  # сохраняем в файл log.txt
+                save_file.write(link_numb + "\n")  # _______________
+                save_file.close()  # закрыть файл
+        else:
+            with open("log_bad.txt", "a") as save_file:  # сохраняем в файл log_bad.txt
+                save_file.write(link_numb + "\n")  # _______________
+                save_file.close()  # закрыть файл
+
 save_number()       #ЗАПУСК ФУНКЦИИ
+
+numb_files = len(os.listdir("image"))
+print(f"Кол-во номеров: [{numb_files}] шт.")
