@@ -11,6 +11,7 @@ def save_number():
         img = Image.open(full_link)
         text = pytesseract.image_to_string(img)
         numb = (text.replace(" ", "").strip()).replace("-", "").replace("8", "7", 1)
+        print(numb)
         link_numb = (f"https://wa.me/{numb}")
         link_numb_bad = (f"https://wa.me/{numb} - inspect")
         a = (len(link_numb))
